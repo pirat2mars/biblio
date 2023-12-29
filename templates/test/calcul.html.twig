@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<p>le résultat du calcul de {{nb1}} + {{nb2}} est {{nb1 + nb2}}</p>
+<p>le résultat du calcul de {{nb1 ~ " + " ~ nb2 ~ " est " ~ (nb1 + nb2)}}</p>
+
+
+<p>{{nb1 ~ " - " ~ nb2 ~ " est " ~ (nb1 - nb2)}}</p>
+<p>{{nb1 ~ " * " ~ nb2 ~ " est " ~ (nb1 * nb2)}}</p>
+    
+    
+{% if nb2 != 0 %}    
+    <p>{{nb1 ~ " / " ~ nb2 ~ " est " ~ (nb1 / nb2)}}</p>
+{% endif %}
+
+
+
+{% if nb1 is same as "99" %}    
+    <p>nb1 est egal a 99</p>
+{% endif %}
+
+
+
+{% if nb1 < 50 and nb1 > 5 %}    
+    <p>nb1 est compris entre 5 et 50</p>
+{% endif %}
+
+
+
+{% endblock %}

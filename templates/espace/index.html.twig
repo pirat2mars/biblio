@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EspaceController!{% endblock %}
+
+{% block body %}
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <h2>Mes réservations</h2>
+            <table class="table table-bordered mt-5">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Livre</th>
+                        <th><i class="fa fa-cogs"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for resa in reservations %}
+                    <tr>
+                        <td>{{resa.date}}</td>
+                        <td><img src="{{ asset('images/' ~ resa.livre.couverture) }}" alt="" class="miniature">
+                            {{resa.livre.IdTitreAuteur}}
+                        </td>
+                        <td><a href="{{ path('app_espace_supprimer_reservation', {'id': resa.livre.id}) }}" class="fa fa-trash"></a></td>  
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3">Aucune réservation</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot class="table-dark">
+                    <tr>
+                        <th>
+                            Emprunter
+                        </th>
+                        <td><a href="{{ path('app_espace_emprunter_des_livres') }}" class="fa fa-save"></a></td>
+                    </tr>
+                </tfoot>
+            </table>
+    </li>
+    <li class="list-group-item"></li>
+    <li class="list-group-item"></li>
+</ul>
+
+
+{% endblock %}

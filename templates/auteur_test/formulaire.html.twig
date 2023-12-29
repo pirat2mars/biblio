@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire auteur{% endblock %}
+
+{% block body %}
+
+
+<form method="post">
+
+    <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input type="text" class="form-control" name="prenom" value="{{ auteur is defined ? auteur.prenom : "" }}">
+    </div>
+    <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" name="nom" value="{{ auteur.nom ?? "" }}">
+    </div>
+    <button class="btn btn-primary mt-3">Enregistrer</button>
+</form>
+
+
+
+
+{% endblock %}

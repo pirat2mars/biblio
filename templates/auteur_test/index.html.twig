@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AuteurTestController!{% endblock %}
+
+{% block body %}
+
+<h1>Liste des auteurs</h1>
+
+    <table class="table-bordered">
+
+    <thead class="table-dark">
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Bio</th>
+        <th>Date de naissance</th>
+        <th>Décès</th>
+        <th>action</th>
+        <th>action</th>
+    </thead>
+    <tbody>
+    {% for auteur in auteurs %}
+    <tr>
+    <td>{{ auteur.id }}</td>
+    <td>{{ auteur.nom  ~ " " ~ auteur.prenom }}</td>
+    <td>{{ auteur.biographie }}</td>
+    <td>{{ auteur.naissance ? auteur.naissance|date("d/m/Y") : "" }}</td>
+    <td>{{ auteur.deces ? auteur.deces|date("d/m/Y") : "" }}</td>
+    <td><a href="{{ path('app_auteur_test_modifier',{id:auteur.id}) }}">modifier</a></td>
+    <td><a href="{{ path('app_auteur_test_update',{id:auteur.id}) }}"><i class="fa fa-edit"></i></a></td>
+
+       
+    </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <th colspan="4">Nombre d'auteurs</th>
+    <td colspan="3">{{auteurs|length}}</td>
+    </tfoot>
+    </table>
+
+
+{% endblock %}

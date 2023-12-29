@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_admin_emprunt_delete', {'id': emprunt.id}) }}" onsubmit="return confirm('Confirmation de supression ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ emprunt.id) }}">
+    <button class="btn"> <i class="fa fa-trash"></i></button>
+</form>

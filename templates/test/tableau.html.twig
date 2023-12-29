@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<style>
+
+table,th,td {border:1px solid black;}
+table {border-collapse:collapse;}
+</style>
+
+{#Commentaire sur twig #}
+
+    <h2>Tableau</h2>
+
+        <p>3eme valeur du tableau {{ tab[2] }}</p>
+        <p>Taille du tableau , filtre length {{ tab|length }}</p>
+        
+        <p>Toute les valeurs du tableau for </p>
+        {% for i in 0..tab|length -1  %}
+        
+            {{i ~ " => " ~ tab[i] }} <br>
+
+        {% endfor %}
+
+    <p>Toute les valeurs du tableau foreach </p>
+        {% for nb in tab %}
+        
+            {{ nb }} <br>
+
+        {% endfor %}
+
+<hr>
+
+    <p>Toute les valeurs du tableau foreach avec index </p>
+    {% for i,nb in tab %}
+    
+        {{ i }} => {{ nb }} <br>
+
+    {% endfor %}
+
+
+
+
+
+
+    <table>
+    <thead><th>valeur i</th><th>son carré</th></thead>
+        <tbody>
+            {% for i in 1..100 %}
+
+            <tr><td>{{i}}</td><td>{{i * i}}</td></tr>
+
+            {% endfor %}
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+
+
+
+    <hr>
+
+<h2>Personne</h2>
+    <p>Le prenom est {{personne["prenom"]}}</p>
+    <p>Le nom est {{personne.nom}}</p>
+    <p>Agé de {{personne.age}}</p>
+
+
+
+
+
+        <table>
+        {% for i,personneIndividu in personne %}
+    
+        <tr><td>{{ i }} </td><td> {{ personneIndividu }} </td></tr>
+        
+        {% endfor %}
+        </table>
+<br>
+        <table>
+            {% for i,personnesLigne in personnes %}
+        
+            <tr><td>{{ i + 1 }} </td><td> {{ personnesLigne.prenom }} {{ personnesLigne.nom }} </td></tr>
+            
+            {% endfor %}
+            </table>
+
+
+
+{% endblock %}
+
+
+
+
+
+

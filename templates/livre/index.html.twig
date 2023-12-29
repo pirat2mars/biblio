@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ titre }}{% endblock %}
+
+{% block body %}
+<h2>{{ titre }}</h2>
+<div class="row">
+
+{% for livre in livres %}
+
+{{include ("livre/vignette.html.twig")}}
+    
+{% endfor %}
+
+</div>
+{% endblock %}

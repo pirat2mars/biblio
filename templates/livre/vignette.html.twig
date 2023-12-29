@@ -1,0 +1,36 @@
+    <div class="col-4 mb-3">
+        <div class="card livre ">
+            <h4 class="card-header bg-primary text-light">{{ livre.titre }}</h4>
+
+            <div class="row  couverture">
+                <div class="col-4 d-flex align-items-center">
+                {% if livre.couverture %}
+                    <img class="card-img p-1 miniature" src="images/{{ livre.couverture }}" alt="pas de couverture">
+                {% endif %}    
+                </div>
+
+                <div class="col-8">
+                    <div class="card-body">
+                        <p class="card-text">De : <strong>{{livre.auteur.identite}}</strong></p>
+                        <p class="card-text">Genre: 
+                            {% for genre in livre.genres %}
+                                <strong>{{genre.libelle}}</strong>
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <a href="{{ path('app_admin_livre_show', {'id': livre.id}) }}" class="card-link"> 
+                    <i class="fa fa-book"></i> Voir plus 
+                </a>
+                {% if is_granted("ROLE_LECTEUR") and livre is dispo %}        
+                    <a href="{{path('app_espace_reserver', { id: livre.id })}}" class="card-link">
+                        <i class="fa fa-cart-arrow-down"></i> Réserver
+                    </a>
+                {% endif %}
+            
+            </div>
+        </div>
+    </div>

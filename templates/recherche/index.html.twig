@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Resultat de la recherche{% endblock %}
+
+{% block body %}
+
+{# {{ dump(livres)}} #}
+
+<div class="row mx-0">
+    <h2 class="col">
+Résultat de la recherche <code>{{ mot }}</code>
+    </h2>
+<h4 class="col-1">{{livres|length}} livre trouvés</h4>
+</div>
+<div class="row">
+    {% for livre in livres %}
+        {{include ("livre/vignette.html.twig")}}
+    {% else %}
+    </div>
+    <div class="alert alert-info">Aucun livre trouvé
+
+    {% endfor %}
+</div> 
+
+{% endblock %}
